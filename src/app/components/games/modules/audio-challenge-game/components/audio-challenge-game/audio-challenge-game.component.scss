@@ -1,0 +1,22 @@
+:host{
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  z-index: -3;
+  background: url('../../../../../../../assets/images/audio.png') center center no-repeat;
+  background-size: contain;
+  flex: 1;
+  color: aliceblue;
+
+  &:after {
+    content: '';
+    position: fixed;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(black, 0.8);
+  }
+}
+

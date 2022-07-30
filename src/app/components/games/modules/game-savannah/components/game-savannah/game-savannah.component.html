@@ -1,0 +1,59 @@
+<div class="savannah is-dark" *ngIf="!play; else game">
+  <div class="savannah__body" *ngIf="!openStatistics">
+    <app-games-start-banner [banner]="banner" (startGame)="startGame()">
+      <div class="savannah__description">
+        <p>
+          После запуска игры вы увидите падающее слово на английском (или русском, если режим игры
+          RU-> EN) и четыре варианта перевода. Выбрать правильный ответ можно двумя способами:
+        </p>
+        <p>1. Кликните по нему мышью;</p>
+        <p>2. Используйте клавиши 1, 2, 3, 4.</p>
+        <p>3. Выберите режим игры:</p>
+      </div>
+      <div class="savannah__lang">
+        <span
+          *ngFor="let item of langs"
+          [class.is-active]="gameSavannahStatus.currentLang === item"
+          (click)="changeLang(item)"
+          >{{ item }}</span
+        >
+        <mat-icon
+          class="savannah__lang-arrow"
+          [class.is-reverse]="gameSavannahStatus.currentLang === 'en'"
+          >keyboard_backspace
+        </mat-icon>
+      </div>
+    </app-games-start-banner>
+  </div>
+
+  <div class="savannah__body" *ngIf="openStatistics">
+    <app-games-end
+      [words]="words"
+      [gameResult]="gameResult"
+      (submitResult)="submitResult($event)"
+    ></app-games-end>
+  </div>
+</div>
+
+<ng-template #game>
+  <div class="savannah">
+    <app-game-savannah-head
+      [gameSavannahStatus]="gameSavannahStatus"
+      (changeStatus)="changeGameSavannahStatus($event)"
+      (restartGame)="openRestartGameDialog()"
+    ></app-game-savannah-head>
+    <div class="savannah__body">
+      <app-game-savannah-list
+        *ngIf="!paused"
+        [currentWord]="currentWord"
+        [answers]="answers"
+        [answer]="getAnswer()"
+        [isPaused]="isPaused"
+        [time]="'--time: ' + animationTime + 's'"
+        (checked)="checkAnswer($event)"
+      ></app-game-savannah-list>
+    </div>
+  </div>
+</ng-template>
+
+<app-full-screen-for-games></app-full-screen-for-games>

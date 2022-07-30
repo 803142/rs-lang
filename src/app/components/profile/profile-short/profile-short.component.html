@@ -1,0 +1,33 @@
+<div class="short_stats-container">
+  <h1>Результаты дня</h1>
+  <p>Изучено слов: {{learnedCount}}</p>
+  <p>Правильных ответов: {{rightPercent || 0 | number: '1.0-1'}} %</p>
+  <h2>Саванна:</h2>
+  <p>Изучено слов: {{shortData.savanna.learned}}</p>
+  <p>
+    Правильных ответов: {{shortData.savanna.right / shortData.savanna.tries * 100 || 0 | number:
+    '1.0-1'}} %
+  </p>
+  <p>Самая длинная серия: {{shortData.savanna.series}}</p>
+  <h2>Спринт</h2>
+  <p>Изучено слов: {{shortData.sprint.learned}}</p>
+  <p>
+    Правильных ответов: {{shortData.sprint.right / shortData.sprint.tries * 100 || 0 | number:
+    '1.0-1'}} %
+  </p>
+  <p>Самая длинная серия: {{shortData.sprint.series}}</p>
+  <h2>Аудио</h2>
+  <p>Изучено слов: {{shortData.audio.learned}}</p>
+  <p>
+    Правильных ответов: {{shortData.audio.right / shortData.audio.tries * 100 || 0 | number:
+    '1.0-1'}} %
+  </p>
+  <p>Самая длинная серия: {{shortData.audio.series}}</p>
+  <h2>Моя игра</h2>
+  <p>Изучено слов: {{shortData.myGame.learned}}</p>
+  <p>
+    Правильных ответов: {{shortData.myGame.right / shortData.myGame.tries * 100 || 0 | number:
+    '1.0-1'}} %
+  </p>
+  <p>Самая длинная серия: {{shortData.myGame.series}}</p>
+</div>

@@ -1,0 +1,52 @@
+:host {
+  mat-card-header {
+    .mat-card-header-text{
+      margin: 0;
+      display: block !important;
+    }
+  }
+}
+mat-list.mat-list.mat-list-base.list-horizontal {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  mat-list-item {
+    display: contents;
+    .correct.material-icons {
+      color: lawngreen;
+    }
+  }
+}
+.answer {
+  .translation{
+    &.incorrect {
+      color: red;
+    }
+  }
+
+}
+.translation{
+  &.correct {
+    color: lawngreen;
+  }
+}
+.item-container {
+  padding: 1rem;
+}
+.audio-game-card {
+  max-width: 20rem;
+  margin: 0 auto;
+}
+.mat-card-header {
+  height: 60px;
+}
+.img-card-container {
+  height: 234px;
+  overflow: hidden;
+  background: url('../../../../../../../assets/images/qwest.png') center no-repeat;
+  background-size: contain;
+}
+.mat-card-image:first-child {
+  margin-top: 0 !important;
+}
+

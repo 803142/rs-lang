@@ -1,0 +1,6 @@
+<app-games-end
+  *ngIf="wordState.isGameEnded"
+  [words]="wordState.wordsInGame"
+  [gameResult]="dataSource"
+  (submitResult)="submitResult($event)"
+></app-games-end>

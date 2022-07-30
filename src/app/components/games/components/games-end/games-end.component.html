@@ -1,0 +1,46 @@
+<div class="games-end" [class.is-light]="light">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 games-end__table">
+    <caption class="mat-title">
+      <div class="games-end__title">Результат игры:</div>
+      <div class="games-end__subtitle">{{ subTitle }}</div>
+    </caption>
+
+    <ng-container matColumnDef="word">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Слово</th>
+      <td mat-cell *matCellDef="let element">{{element.word}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="wordTranslate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Перевод</th>
+      <td mat-cell *matCellDef="let element">{{element.wordTranslate}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="result">
+      <th class="games-end__table-result" mat-header-cell *matHeaderCellDef mat-sort-header>
+        Результат
+      </th>
+      <td class="games-end__table-result" mat-cell *matCellDef="let element">
+        <span class="material-icons"
+          >{{element.result ? 'thumb_up_off_alt' : 'thumb_down_on_alt' }}</span
+        >
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="audio">
+      <th mat-header-cell *matHeaderCellDef>Audio</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-mini-fab (click)="playWordAudio(element.audio)">
+          <i class="material-icons">volume_up</i>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div class="end-game-manage">
+    <button mat-stroked-button (click)="playAgain()">Повторить игру</button>
+    <button mat-stroked-button (click)="cancel()">Закончить игру</button>
+  </div>
+</div>

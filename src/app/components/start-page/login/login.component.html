@@ -1,0 +1,28 @@
+<mat-card class="card">
+  <div class="modal" *ngIf="loading">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+    <mat-card-title>Войти</mat-card-title>
+    <mat-card-content [class.card-content]="true">
+      <mat-form-field appearance="fill">
+        <mat-label>Почта</mat-label>
+        <input formControlName="email" name="email" type="email" matInput required />
+        <mat-error *ngIf="this.userData.controls.email.invalid"
+          >{{getErrorEmailMessage()}}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input formControlName="password" name="password" type="password" matInput required />
+        <mat-error *ngIf="this.userData.controls.password.invalid"
+          >{{getErrorPasswordMessage()}}</mat-error
+        >
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Войти</button>
+      <button mat-raised-button color="primary" [mat-dialog-close]>закрыть</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

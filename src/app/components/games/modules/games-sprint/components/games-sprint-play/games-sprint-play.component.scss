@@ -1,0 +1,57 @@
+:host {
+  position: relative;
+  flex: 1;
+  padding: 2rem;
+  background-color: #fff;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0;
+  }
+}
+.content{
+    position: relative;
+    height: 100%;
+    text-align: center;
+    margin: 1rem auto;
+    max-width: 20rem;
+
+    &--large {
+      max-width: 100%;
+
+      .games-end table td {
+        text-align: left;
+      }
+    }
+
+    .start-button {
+        margin: 1rem auto;
+
+        &.is-disabled {
+          opacity: 0.75;
+          pointer-events: none;
+        }
+    }
+
+    .icons {
+        display: flex;
+        justify-content: space-between;
+
+        .flex {
+            display: flex;
+            justify-content: left;
+            font-size: 1.4rem;
+
+            div {
+                align-self: center;
+            }
+        }
+    }
+
+    .help-button {
+        margin-top: 0.5rem;
+    }
+}
+
+p {
+    text-align: center;
+}

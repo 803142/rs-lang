@@ -1,0 +1,71 @@
+<div class="game-field" *ngIf="!openResult; else result">
+  <div cdkDropListGroup class="game">
+    <div class="item-container">
+      <div
+        class="item-list"
+        id="pictures"
+        cdkDropList
+        [cdkDropListData]="imagesArray"
+        [cdkDropListEnterPredicate]="noReturnPredicate"
+      >
+        <div
+          cdkDrag
+          class="item-box"
+          *ngFor="let item of imagesArray"
+          [cdkDragData]="item"
+          (cdkDragStarted)="started($event, item?._id)"
+        >
+          <div *cdkDragPlaceholder></div>
+          <p class="imgblock">
+            <img [src]="apiUrl + item.image" />
+            <span>{{item.wordTranslate}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <ng-container *ngFor="let item of wordsArray">
+        <div
+          cdkDropList
+          class="item-list"
+          [cdkDropListData]="item"
+          (cdkDropListDropped)="drop($event, item?._id)"
+        >
+          <div cdkDrag class="item-box" [cdkDragDisabled]="disabled">
+            {{item.word | uppercase}}
+            <div class="inside"></div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div>
+      <mat-card>
+        <mat-card-title>Очки:</mat-card-title>
+        <mat-card-content>
+          <p>{{ score }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="try-amount">
+        <mat-card-title>Попытки:</mat-card-title>
+        <mat-card-content>
+          <p>{{ tryCount }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<ng-template #result>
+  <div class="game-field">
+    <app-games-end
+      [light]="true"
+      [words]="words"
+      [gameResult]="gameResult"
+      (submitResult)="submitResult($event)"
+    ></app-games-end>
+  </div>
+</ng-template>
+
+<app-full-screen-for-games></app-full-screen-for-games>

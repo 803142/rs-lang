@@ -1,0 +1,23 @@
+<div style="min-height: calc(100vh - 128px)">
+  <mat-tab-group
+    mat-align-tabs="center"
+    (selectedTabChange)="onChangeSection($event)"
+    selectedIndex="{{currentSection}}"
+  >
+    <mat-tab *ngFor="let tab of tabs" label="{{tab.label}}">
+      <ng-template matTabContent>
+        <app-dictionary-tab
+          [words$]="words$"
+          [totalCount$]="totalCount$"
+          [label]="tab.label"
+          [color]="tab.color"
+          [group]="currentGroup"
+          [settings]="settings"
+          (changePageEvent)="onChangePage($event)"
+          (changeGroupEvent)="onChangeGroup($event)"
+          (restoreWordEvent)="restoreWord($event)"
+        ></app-dictionary-tab>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

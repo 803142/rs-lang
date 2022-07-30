@@ -1,0 +1,15 @@
+<div class="gs-list" [class.is-paused]="isPaused">
+  <div class="gs-list__current" [style]="time">{{ currentWord }}</div>
+  <ol class="gs-list__answers">
+    <li
+      *ngFor="let answer of answers"
+      class="gs-list__answer"
+      [class.is-error]="answer !== current && current.length >= 1"
+      [class.is-right]="answer === current"
+      [attr.data-answer]="answer"
+      (click)="checkedAnswer(answer)"
+    >
+      {{ answer }}
+    </li>
+  </ol>
+</div>

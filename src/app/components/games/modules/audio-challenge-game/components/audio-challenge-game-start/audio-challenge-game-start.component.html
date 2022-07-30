@@ -1,0 +1,7 @@
+<div *ngIf="!wordState.isGameStarted" class="audio-start-container">
+  <app-games-start-banner [banner]="banner" (startGame)="newGame()">
+    <p>
+      После того, как вы услышите слово на английском языке необходимо выбрать правильный перевод.
+    </p>
+  </app-games-start-banner>
+</div>

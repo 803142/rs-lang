@@ -1,0 +1,36 @@
+<form class="content-settings" [formGroup]="setGames" (ngSubmit)="onSubmit()">
+  <div class="card-words-amount">
+    <mat-card-content>
+      <label id="words-amount-radio-group-label">Выберите количество слов: </label>
+      <mat-radio-group
+        [formControl]="groupAmount"
+        aria-labelledby="words-amount-radio-group-label"
+        class="radio-group"
+      >
+        <mat-radio-button *ngFor="let amount of wordsAmount" [value]="amount" class="radio-button">
+          {{ amount }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </div>
+  <div>
+    <mat-card-content>
+      <label id="level-radio-group-label">Выберите уровень: </label>
+      <mat-radio-group
+        [formControl]="groupLevel"
+        aria-labelledby="level-radio-group-label"
+        class="radio-group"
+      >
+        <mat-radio-button *ngFor="let level of levelChosen" [value]="level" class="radio-button">
+          {{ level }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </div>
+  <mat-card-actions>
+    <mat-checkbox [formControl]="hideRequiredControl">Больше не показывать</mat-checkbox>
+  </mat-card-actions>
+  <mat-card-actions class="confirm-button">
+    <button mat-raised-button color="primary" mat-dialog-close type="submit">Подтвердить</button>
+  </mat-card-actions>
+</form>

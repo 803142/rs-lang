@@ -1,0 +1,29 @@
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.card-words-amount {
+  padding-bottom: 20px;
+}
+
+.confirm-button {
+  padding-top: 20px;
+  text-align: center;
+}
+
+mat-card-actions {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 450px) {
+  .radio-group {
+    flex-direction: column;
+  }
+}

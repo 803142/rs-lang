@@ -1,0 +1,25 @@
+<div class="content">
+  <h1>Наша команда:</h1>
+  <mat-grid-list [cols]="cols" rowHeight="250px">
+    <mat-grid-tile *ngFor="let item of aboutUs">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ item.name + " " + item.surname }}</mat-card-title>
+            <mat-card-subtitle>{{ item.role }}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="item.url + '.png'" [alt]="item.name" />
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ item.contribution }}</p>
+        </mat-card-content>
+        <mat-card-footer>
+          <p>
+            <a [href]="item.url"
+              ><img class="github-image" src="../../../../../assets/images/github-mark-32px.png"
+            /></a></p
+        ></mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

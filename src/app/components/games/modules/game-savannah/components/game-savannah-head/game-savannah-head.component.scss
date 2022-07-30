@@ -1,0 +1,165 @@
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 87px 20px 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    padding: 10px 16px 10px 20px;
+  }
+}
+
+.savannah {
+
+  &__settings {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .mat-icon {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+
+  &__settings-sound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 0 0;
+    cursor: pointer;
+
+    .mat-icon {
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: #3F51B5;
+      }
+    }
+
+    @media (max-width: 768px) {
+      margin: 14px 0 0 -5px;
+    }
+  }
+
+  &__settings-button {
+    padding: 5px 5px 0;
+    margin: 0 20px 0 0;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #777;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #666;
+    }
+
+    @media (max-width: 768px) {
+      margin: 0;
+    }
+  }
+
+  &__settings-lang {
+    display: flex;
+    font-size: 0;
+    margin: 1px 0 0;
+    border-radius: 4px;
+    overflow: hidden;
+
+    span {
+      display: inline-block;
+      padding: 7px;
+      font-size: 20px;
+      color: #fff;
+      text-transform: uppercase;
+      background-color: #666;
+      transition: background-color 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #777;
+      }
+
+      &.is-active {
+        background-color: #3F51B5;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__progress {
+    position: relative;
+    display: flex;
+    padding: 8px 0 0;
+
+    @media (max-width: 768px) {
+      padding: 43px 0 0;
+    }
+  }
+
+  &__progress-heart {
+    margin: 0 0 0 20px;
+
+    .mat-icon {
+      font-size: 24px;
+      color: orange;
+    }
+
+    @media (max-width: 768px) {
+      margin: 0 0 0 4px;
+    }
+  }
+
+  &__progress-chart {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    height: 18px;
+    width: 200px;
+    background-color: orange;
+
+    @media (max-width: 768px) {
+      bottom: -10px;
+      width: 133px;
+      height: 12px;
+    }
+  }
+
+  &__progress-count {
+    position: relative;
+    z-index: 5;
+    padding: 0 3px 0 0;
+    text-align: right;
+    color: #fff;
+
+    @media (max-width: 768px) {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  &__progress-chart_inner,
+  &__progress-chart_error {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: green;
+  }
+
+  &__progress-chart_error {
+    background-color: red;
+  }
+}

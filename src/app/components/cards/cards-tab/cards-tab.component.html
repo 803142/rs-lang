@@ -1,0 +1,22 @@
+<mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight |async">
+  <div class="example-button-row">
+    <button
+      mat-raised-button
+      [ngStyle]="{'background': colorRGB(0.6)}"
+      *ngFor="let game of games$ | async;"
+      [routerLink]="['/games/', game.name]"
+      (click)="addGameList()"
+    >
+      {{ game.name }}
+    </button>
+  </div>
+  <mat-grid-tile *ngFor="let word of words |async">
+    <app-card-item [word]="word" [color]="color"></app-card-item>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-paginator
+  #paginator
+  [length]="length"
+  [pageSize]="20"
+  [pageSizeOptions]="[20, 30]"
+></mat-paginator>

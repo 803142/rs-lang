@@ -1,0 +1,26 @@
+<div class="stats-wrapper">
+  <mat-card class="stats-card">
+    <mat-card-content>
+      <app-profile-short [shortData]="shortStats | async"></app-profile-short>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="graph-card">
+    <mat-card-content>
+      <h1>Долгосрочная статистика</h1>
+
+      <app-profile-chart
+        [checkedStyle]="checkedStyle"
+        [longData]="longStats | async"
+      ></app-profile-chart>
+
+      <mat-radio-group
+        aria-labelledby="radio-group-label"
+        class="radio-group"
+        [(ngModel)]="checkedStyle"
+      >
+        <mat-radio-button class="radio-button" [value]="daily">{{daily}}</mat-radio-button>
+        <mat-radio-button class="radio-button" [value]="total">{{total}}</mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </mat-card>
+</div>

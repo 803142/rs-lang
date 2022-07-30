@@ -1,0 +1,60 @@
+footer {
+  position: relative;
+  z-index: 10;
+  height: 64px;
+  padding: 0 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+  color: #fff;
+
+  img, .rs-logo {
+    margin: 0;
+    height: 2rem;
+  }
+
+  p {
+    margin: 0;
+    z-index: 2;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    z-index: 2;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    Left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#673ab7, #ffd740);
+    cLip-path: ellipse(70% 100% at left 100%);
+    opacity: .5;
+    backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+
+  &::after {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    Left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#673ab7, #ffd740);
+    cLip-path: ellipse(60% 84% at right 92%);
+    backdrop-filter: blur(4px);
+    z-index: 0;
+    opacity: .5;
+  }
+}

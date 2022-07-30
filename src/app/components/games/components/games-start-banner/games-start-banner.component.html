@@ -1,0 +1,13 @@
+<div class="banner__title">
+  <h1>{{ banner.title }}</h1>
+</div>
+<div class="banner__content">
+  <div class="banner__subtitle">{{ banner.subtitle }}</div>
+</div>
+<ng-content></ng-content>
+<div class="banner__button-wrapper">
+  <button class="banner__button--start" (click)="start()">
+    <mat-icon>flag</mat-icon>
+    <span>Играть</span>
+  </button>
+</div>

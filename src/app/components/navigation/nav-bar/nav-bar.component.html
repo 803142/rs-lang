@@ -1,0 +1,58 @@
+<div class="modal" *ngIf="loading">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="'over'"
+    [opened]="false"
+  >
+    <div class="menu_header">
+      <mat-toolbar>Menu</mat-toolbar>
+      <button type="button" aria-label="Close sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav close icon">close</mat-icon>
+      </button>
+    </div>
+    <mat-nav-list (click)="drawer.toggle()">
+      <a mat-list-item [routerLink]="this.path.Empty">Стартовая страница</a>
+      <ng-template [ngIf]="isAuth$ | async">
+        <a mat-list-item [routerLink]="this.path.Cards">Учебник</a>
+        <a mat-list-item [routerLink]="this.path.Games">Список игр</a>
+        <a mat-list-item [routerLink]="this.path.Dictionary">Словарь</a>
+        <a mat-list-item [routerLink]="this.path.Profile">Профиль</a>
+      </ng-template>
+      <a mat-list-item [routerLink]="this.path.AboutUs">Про нас</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>rslang</span>
+      <div class="space"></div>
+      <ng-template [ngIf]="isAuth$|async" [ngIfThen]="loginBlock" [ngIfElse]="log"> </ng-template>
+      <ng-template #log>
+        <button (click)="modalRegistration()" mat-raised-button color="primary">Регистрация</button>
+        <button (click)="modalLogin()" mat-raised-button color="primary">Войти</button>
+      </ng-template>
+      <ng-template #loginBlock>
+        <div class="block_user">
+          <img
+            *ngIf="(user$|async).photo"
+            class="avatar"
+            [src]="apiUrl + (user$|async).photo"
+            alt="users photo"
+          />
+          <span class="greet">Привет, {{(user$|async).name}}</span>
+          <button mat-raised-button color="accent" (click)="onLogout()">Выход</button>
+        </div>
+      </ng-template>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

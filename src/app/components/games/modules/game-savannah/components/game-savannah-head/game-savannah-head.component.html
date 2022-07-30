@@ -1,0 +1,35 @@
+<div class="savannah__settings">
+  <button
+    type="button"
+    class="savannah__settings-sound"
+    aria-label="on/off sound"
+    mat-icon-button
+    (click)="changeSound()"
+  >
+    <mat-icon>{{ gameSavannahStatus.sound ? 'volume_up' : 'volume_off' }}</mat-icon>
+  </button>
+  <div class="savannah__settings-button" (click)="restart()">
+    <mat-icon>autorenew</mat-icon>
+  </div>
+</div>
+<div class="savannah__progress">
+  <div *ngFor="let heart of attempts; let i = index" class="savannah__progress-heart">
+    <mat-icon>{{ i + 1 > gameSavannahStatus.errors ? 'favorite' : 'favorite_border' }}</mat-icon>
+  </div>
+  <div class="savannah__progress-chart">
+    <div *ngIf="gameSavannahStatus.wordsCount" class="savannah__progress-count">
+      {{ gameSavannahStatus.errors + ' / ' + gameSavannahStatus.currentCounts + ' / ' +
+      gameSavannahStatus.wordsCount }}
+    </div>
+    <div
+      *ngIf="gameSavannahStatus.progressAll"
+      class="savannah__progress-chart_inner"
+      [ngStyle]="{ width: gameSavannahStatus.progressAll }"
+    ></div>
+    <div
+      *ngIf="gameSavannahStatus.progressError"
+      class="savannah__progress-chart_error"
+      [ngStyle]="{ width: gameSavannahStatus.progressError }"
+    ></div>
+  </div>
+</div>

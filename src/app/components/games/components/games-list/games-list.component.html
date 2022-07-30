@@ -1,0 +1,11 @@
+<section class="featured">
+  <app-games-settings></app-games-settings>
+  <div class="container">
+    <h2 class="section-title">Мини-игры</h2>
+    <ul class="split">
+      <ng-container *ngFor="let game of games$ | async;">
+        <app-games-item [game]="game"></app-games-item>
+      </ng-container>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,70 @@
+<div class="content" [class.content--large]="end">
+  <div *ngIf="play">
+    <h2>Время игры 60 секунд!</h2>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="accent"
+        class="start-button"
+        [class.is-disabled]="start"
+        (click)="onStart()"
+      >
+        Старт
+      </button>
+      <button mat-raised-button color="primary" (click)="goBack()">Назад</button>
+    </mat-card-actions>
+    <div class="icons">
+      <div class="flex">
+        <mat-icon aria-hidden="false" aria-label="Example alarm icon">alarm</mat-icon>
+        <div>{{counter}}</div>
+      </div>
+      <div class="flex">
+        <mat-icon aria-hidden="false" aria-label="Example star icon">star_border</mat-icon>
+        <div class="score" id="score">{{score}}</div>
+      </div>
+    </div>
+    <div>
+      <app-games-sprint-card
+        [word]="wordInCard"
+        [translation]="translation"
+      ></app-games-sprint-card>
+    </div>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="warn"
+        [disabled]="!start"
+        (click)="onAgree(false)"
+        [@changeButton]="isHideFalse ? 'hide' : 'show'"
+      >
+        НЕВЕРНО (2)
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!start"
+        (click)="onAgree(true)"
+        [@changeButton]="isHideTrue ? 'hide' : 'show'"
+      >
+        ВЕРНО (1)</button
+      ><br />
+      <button
+        mat-raised-button
+        class="help-button"
+        [disabled]="(countHelp>=3 || !start) ? true : false"
+        (click)="onHelp()"
+      >
+        Подсказка (3)
+      </button>
+    </mat-card-actions>
+  </div>
+  <div *ngIf="end">
+    <app-games-end
+      [words]="words"
+      [gameResult]="gameResult"
+      (submitResult)="submitResult($event)"
+    ></app-games-end>
+  </div>
+</div>
+
+<app-full-screen-for-games></app-full-screen-for-games>

@@ -1,0 +1,86 @@
+<main>
+  <section class="hero">
+    <div class="container spacing">
+      <h1 class="primary-title">Изучай английский язык вместе с RS Lang!</h1>
+      <p>
+        Используя наше приложение вы легко и быстро улучшите свой словарный запас. На сайте вы
+        можете выбирать различные уровни сложности, что позволит шаг за шагом повышать свой уровень
+        английского языка. Также для наших пользователей доступны увлекательные мини-игры,
+        предназначенные для изучения и повторения слов.
+      </p>
+    </div>
+  </section>
+  <section #welcomeAnimation class="featured" [@sectionAnimation]="animationState">
+    <div class="container">
+      <h2 class="section-title">После регистрации доступны</h2>
+      <ul class="split">
+        <li class="featured__item" [@childAnimation]="animationState">
+          <img src="../../../../assets/images/dictionary.png" alt="" class="featured__img" />
+          <p class="featured__details">
+            <span class="description">личный словарь</span>
+          </p>
+        </li>
+        <li class="featured__item" [@childAnimation]="animationState">
+          <img src="../../../../assets/images/gamepad-frontpage.png" alt="" class="featured__img" />
+          <p class="featured__details">
+            <span class="description">игры для тренировки</span>
+          </p>
+        </li>
+        <li class="featured__item" [@childAnimation]="animationState">
+          <img src="../../../../assets/images/statistics.png" alt="" class="featured__img" />
+          <p class="featured__details">
+            <span class="description">отслеживание прогресса</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="hero login" *ngIf="isAuth$|async">
+    <div class="container">
+      <h2 class="primary-title">вход и регистрация</h2>
+      <button (click)="modalLogin()" class="btn">вход</button
+      ><button (click)="modalRegistration()" class="btn">регистрация</button>
+    </div>
+  </section>
+  <section #welcomeAnimation class="our-products" [@sectionAnimation]="animationState">
+    <div class="container">
+      <h2 class="section-title">О проекте</h2>
+
+      <article [@childAnimation]="animationState" class="product section-blue spacing">
+        <iframe class="product__video" [src]="safeURL" frameborder="0" allowfullscreen></iframe>
+        <h3 class="product__title">Видео</h3>
+        <p class="product__description">Небольшой ролик с демонстрацией приложения.</p>
+      </article>
+
+      <article
+        [@childAnimation]="animationState"
+        class="product section-white section-left spacing"
+      >
+        <img
+          class="team product__image"
+          [src]="(aboutUsItem|async).url + '.png'"
+          alt="{{(aboutUsItem|async).name + ' ' + (aboutUsItem|async).surname}}"
+        />
+        <h3 class="product__title">Наша команда</h3>
+        <div class="block_img"></div>
+        <h2>{{(aboutUsItem|async).name + ' ' + (aboutUsItem|async).surname}}</h2>
+        <h3>{{(aboutUsItem|async).role}}</h3>
+        <p>{{(aboutUsItem|async).contribution}}</p>
+        <button
+          class="btn"
+          aria-label="Example icon button with a menu icon"
+          (click)="nextItem(this.index-1)"
+        >
+          <mat-icon>arrow_back_ios </mat-icon>
+        </button>
+        <button
+          class="btn"
+          aria-label="Example icon button with a menu icon"
+          (click)="nextItem(this.index+1)"
+        >
+          <mat-icon> arrow_forward_ios </mat-icon>
+        </button>
+      </article>
+    </div>
+  </section>
+</main>

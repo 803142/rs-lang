@@ -1,0 +1,46 @@
+<mat-card class="card">
+  <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+    <mat-card-title>Регистрация</mat-card-title>
+    <mat-card-content [class.card-content]="true">
+      <div class="example-1">
+        <div class="form-group">
+          <label class="label">
+            <i class="material-icons">attach_file</i>
+            <span class="title"
+              >{{userData.value.filedata ? userData.value.filedata : 'Добавить фото'}}</span
+            >
+            <input
+              formControlName="filedata"
+              name="filedata"
+              type="file"
+              accept="image/*"
+              (change)="onFileChange($event,'filedata')"
+            />
+          </label>
+        </div>
+      </div>
+      <mat-form-field appearance="fill" class="input">
+        <mat-label>Имя</mat-label>
+        <input formControlName="name" name="name" type="text" matInput required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input">
+        <mat-label>Почта</mat-label>
+        <input formControlName="email" name="email" type="email" matInput required />
+        <mat-error *ngIf="this.userData.controls.email.invalid"
+          >{{getErrorEmailMessage()}}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input">
+        <mat-label>Пароль</mat-label>
+        <input formControlName="password" name="password" type="password" matInput required />
+        <mat-error *ngIf="this.userData.controls.password.invalid"
+          >{{getErrorPasswordMessage()}}</mat-error
+        >
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="center">
+      <button mat-raised-button color="primary" type="submit">Регистрация</button>
+      <button mat-raised-button color="primary" [mat-dialog-close]>Закрыть</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

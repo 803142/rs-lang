@@ -1,0 +1,27 @@
+<form class="settings-form" [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+  <div>
+    <mat-card class="settings-card">
+      <mat-card-content>
+        <h2>Количество слов в день</h2>
+        <mat-slider
+          [min]="1"
+          [max]="50"
+          formControlName="wordsPerDay"
+          thumbLabel
+          (input)="onSliderChange($event)"
+        ></mat-slider>
+        <span>{{wordsPerDay}}</span>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="settings-card">
+      <mat-card-content>
+        <h2>Настройки учебника</h2>
+        <mat-slide-toggle formControlName="displayTranslation">Отображать перевод</mat-slide-toggle>
+        <mat-slide-toggle formControlName="displayHandlingButtons">
+          Показывать кнопки добавления в словарь
+        </mat-slide-toggle>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <button mat-raised-button type="submit">Сохранить настройки</button>
+</form>

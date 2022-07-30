@@ -1,0 +1,8 @@
+<li class="featured__item">
+  <a [routerLink]="['/games/', game.name]">
+    <img [src]="game.img" alt="{{ game.nameRU }}" class="featured__img" />
+    <p class="featured__details">
+      <span class="description">{{ game.nameRU }}</span>
+    </p>
+  </a>
+</li>

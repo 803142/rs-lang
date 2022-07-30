@@ -1,0 +1,21 @@
+{
+  "eslint.validate": [ "javascript", "typescript", "html"],
+
+  "eslint.options": {
+    "extensions": [".js", ".ts", "html"]
+  },
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
+  "githubPullRequests.remotes": [
+    "origin",
+    "upstream",
+    "develop"
+  ],
+  "cSpell.words": [
+    "Перевод",
+    "Результат",
+    "Тренировать"
+  ],
+}

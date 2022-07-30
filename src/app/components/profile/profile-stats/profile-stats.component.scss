@@ -1,0 +1,42 @@
+.stats-wrapper {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+
+  h1 {
+    font-weight: bold;
+  }
+}
+
+.stats-card {
+  margin: 8px auto;
+  width: 20%;
+}
+
+.graph-card {
+  margin: 8px auto;
+  width: 70%;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+  font-size: 14px;
+}
+
+@media (max-width: 800px) {
+  .stats-wrapper {
+    flex-direction: column;
+  }
+
+  .stats-card,
+  .graph-card  {
+    width: 95%;
+  }
+
+}

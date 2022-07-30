@@ -1,0 +1,65 @@
+<mat-card
+  class="example-card"
+  [ngStyle]="{'background': word.userWord?.difficulty === 'hard' ? colorRGB(0.7) : colorRGB()}"
+>
+  <mat-card-header>
+    <mat-card-title>{{word.word}}</mat-card-title>
+    <mat-card-subtitle>{{word.transcription}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="set.optional.displayTranslation"
+      >{{word.wordTranslate}}</mat-card-subtitle
+    >
+    <mat-card-subtitle *ngIf="word.userWord"
+      >Повторений: {{word.userWord?.optional?.repeat}}</mat-card-subtitle
+    >
+    <mat-card-subtitle *ngIf="word.userWord"
+      >Ошибок: {{word.userWord?.optional?.failCount}}</mat-card-subtitle
+    >
+    <img
+      mat-card-md-image
+      [src]="apiUrl + word.image"
+      alt="Photo of a Shiba Inu"
+      (click)="click(word, true)"
+    />
+    <div class="group-button">
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a home icon"
+        title="play"
+        (click)="play ? stopAudio() :playAudio()"
+      >
+        <mat-icon>{{play ? 'pause_circle_outline' : 'play_circle' }}</mat-icon>
+      </button>
+      <button
+        *ngIf="set.optional.displayHandlingButtons"
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a home icon"
+        [title]="word.userWord?.difficulty === 'hard' ? 'add card to EASY' : 'add card to HARD'"
+        (click)="word.userWord?.difficulty === 'hard'
+        ? addDifficultyWord(word._id, 'easy', !word.userWord)
+        : addDifficultyWord(word._id, 'hard', !word.userWord)"
+      >
+        <mat-icon>
+          {{word.userWord?.difficulty === 'hard' ? 'remove_circle_outline' : 'add_circle_outline'}}
+        </mat-icon>
+      </button>
+      <button
+        *ngIf="set.optional.displayHandlingButtons"
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a home icon"
+        title="delete card"
+        (click)="addDifficultyWord(word._id, 'deleted', !word.userWord)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <h3>{{word.textExample}}</h3>
+    <em *ngIf="set.optional.displayTranslation">{{word.textExampleTranslate}}</em>
+    <h3>{{word.textMeaning}}</h3>
+    <em *ngIf="set.optional.displayTranslation">{{word.textMeaningTranslate}}</em>
+  </mat-card-content>
+</mat-card>

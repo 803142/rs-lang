@@ -1,0 +1,26 @@
+<mat-tab-group
+  mat-align-tabs="center"
+  (selectedTabChange)="onGroupChange($event)"
+  selectedIndex="{{group}}"
+>
+  <mat-tab *ngFor="let tab of tabs" label="{{tab.label}}">
+    <ng-template mat-tab-label
+      ><mat-icon [ngStyle]="{'color': colorRGB(tab.color)}" class="example-tab-icon"
+        >{{tab.icon}}</mat-icon
+      ></ng-template
+    >
+    <ng-template matTabContent>
+      <app-dictionary-list
+        [words$]="words$"
+        [totalCount$]="totalCount$"
+        [color]="tab.color"
+        [label]="label"
+        [settings]="settings"
+        (changePageEvent)="changePage($event)"
+        (restoreWordEvent)="restoreWord($event)"
+        *ngIf="expectation | async; else elseBlock"
+      ></app-dictionary-list>
+    </ng-template>
+    <ng-template #elseBlock><mat-spinner></mat-spinner></ng-template>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,43 @@
+:root {
+  display: block;
+  flex: 1;
+  padding: 1rem;
+}
+
+.games-end {
+  margin: 0 auto;
+  padding: 1px 20px 20px;
+
+  @media (max-width: 768px) {
+    padding: 1px 5px 20px;
+  }
+
+  &.is-light {
+    border-radius: 3px;
+    background-color: rgba(#fff, 0.75);
+  }
+
+  &__table {
+    width: 700px;
+    margin: 1rem auto;
+
+    @media (max-width: 768px) {
+      width: 95vw;
+    }
+
+    .games-end__table-result {
+      max-width: 120px;
+    }
+
+    th.mat-sort-header-sorted {
+      color: black;
+    }
+  }
+}
+
+.end-game-manage {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 2rem;
+}

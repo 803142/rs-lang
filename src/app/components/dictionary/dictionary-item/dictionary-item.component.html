@@ -1,0 +1,46 @@
+<mat-card
+  class="example-card"
+  [ngStyle]="{'background': word.userWord?.difficulty === 'hard' ? colorRGB(0.7) : colorRGB()}"
+>
+  <mat-card-header>
+    <mat-card-title>{{word.word}}</mat-card-title>
+    <mat-card-subtitle>{{word.transcription}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="settings.optional.displayTranslation"
+      >{{word.wordTranslate}}</mat-card-subtitle
+    >
+    <mat-card-subtitle *ngIf="word.userWord"
+      >Повторений: {{word.userWord?.optional?.repeat}}</mat-card-subtitle
+    >
+    <mat-card-subtitle *ngIf="word.userWord"
+      >Ошибок: {{word.userWord?.optional?.failCount}}</mat-card-subtitle
+    >
+    <img mat-card-md-image [src]="apiUrl + word.image" alt="Photo of a Shiba Inu" />
+    <div class="group-button">
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a home icon"
+        title="Проиграть звук"
+        (click)="play ? stopAudio() :playAudio()"
+      >
+        <mat-icon>{{play ? 'pause_circle_outline' : 'play_circle' }}</mat-icon>
+      </button>
+      <button
+        *ngIf="isRestore() && settings.optional.displayHandlingButtons"
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a home icon"
+        title="Восстановить слово"
+        (click)="restoreWord()"
+      >
+        <mat-icon>reply</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <h3>{{word.textExample}}</h3>
+    <em *ngIf="settings.optional.displayTranslation">{{word.textExampleTranslate}}</em>
+    <h3>{{word.textMeaning}}</h3>
+    <em *ngIf="settings.optional.displayTranslation">{{word.textMeaningTranslate}}</em>
+  </mat-card-content>
+</mat-card>

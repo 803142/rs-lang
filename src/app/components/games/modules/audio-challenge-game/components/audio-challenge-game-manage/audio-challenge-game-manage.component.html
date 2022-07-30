@@ -1,0 +1,18 @@
+<div *ngIf="wordState.isGameStarted && !wordState.isGameEnded" class="audio-manage-container">
+  <button
+    mat-stroked-button
+    color="warn"
+    *ngIf="!wordState.isTranslationChoosed"
+    (click)="skipWord()"
+  >
+    Пропустить
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    *ngIf="wordState.isTranslationChoosed"
+    (click)="nextWord()"
+  >
+    Дальше
+  </button>
+</div>

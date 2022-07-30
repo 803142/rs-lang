@@ -1,0 +1,24 @@
+<div *ngIf="words$|async as words">
+  <div *ngIf="words.length!==0; else empty">
+    <mat-grid-list [cols]="cols | async" [rowHeight]="rowHeight |async">
+      <app-buttons [color]="color" [words]="words"></app-buttons>
+      <mat-grid-tile *ngFor="let word of words; trackBy:identify">
+        <app-dictionary-item
+          [settings]="settings"
+          [word]="word"
+          [color]="color"
+          [label]="label"
+          (restoreWordEvent)="restoreWord($event)"
+        ></app-dictionary-item>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-paginator
+      #paginator
+      [length]="totalCount$|async"
+      [pageSize]="20"
+      hidePageSize="true"
+      (page)="changePage($event)"
+    ></mat-paginator>
+  </div>
+</div>
+<ng-template #empty><div class="emptyContainer">По вашему запросу нет слов</div></ng-template>
