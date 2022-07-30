@@ -7,5 +7,5 @@ export class UrlConstants {
 }
 
 export const URL_BACK_SERVER = {
-  URL_BACK: 'https://andey-rslang-back-end.herokuapp.com/',
+  URL_BACK: 'https://api-words-for-803142.herokuapp.com/',
 };
